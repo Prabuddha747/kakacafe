@@ -7,16 +7,15 @@ export const CAFE_CONFIG = {
   brandName: 'Kaka Cafe',
   tagline: 'Your Daily Dose of Happiness.',
   // Configurable WhatsApp number (country code + number without '+' or spaces).
-  // PLACEHOLDER: Replace '919876543210' with your real business WhatsApp number.
-  whatsappNumber: '919876543210',
-  displayPhone: '+91 98765 43210',
+  whatsappNumber: '91123456789',
+  displayPhone: '+91 123456789',
   email: 'hello@kakacafe.in',
-  addressLine1: 'Exhibition Road, Near Fraser Road',
-  addressLine2: 'Patna, Bihar 800001',
+  addressLine1: 'Boring Road',
+  addressLine2: 'Patna, Bihar',
   instagramHandle: '@kakacafe.official',
   instagramUrl: 'https://instagram.com/kakacafe.official',
   facebookUrl: 'https://facebook.com/kakacafe.official',
-  googleMapsUrl: 'https://maps.google.com/?q=Exhibition+Road+Patna+Bihar',
+  googleMapsUrl: 'https://maps.google.com/?q=Boring+Road+Patna+Bihar',
   hours: {
     weekdays: 'Mon – Fri: 7:30 AM – 10:30 PM',
     weekends: 'Sat – Sun: 8:00 AM – 11:30 PM',

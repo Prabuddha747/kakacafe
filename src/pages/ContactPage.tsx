@@ -127,7 +127,7 @@ export function ContactPage() {
                 <Phone className="w-5 h-5 text-[#6F4E37] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-[#3E2723]">Phone</p>
-                  <p className="tabular-nums">{CAFE_CONFIG.displayPhone} (Placeholder)</p>
+                  <p className="tabular-nums">{CAFE_CONFIG.displayPhone}</p>
                 </div>
               </div>
 

@@ -140,7 +140,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-2.5">
               <Phone className="w-4 h-4 text-[#C89B5C] shrink-0" />
-              <span className="tabular-nums">{CAFE_CONFIG.displayPhone} (Placeholder)</span>
+              <span className="tabular-nums">{CAFE_CONFIG.displayPhone}</span>
             </div>
             <div className="flex items-center gap-2.5">
               <Mail className="w-4 h-4 text-[#C89B5C] shrink-0" />
@@ -158,7 +158,6 @@ export function Footer() {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#F8F3E9]/60">
           <p>© {new Date().getFullYear()} Kaka Cafe. All rights reserved.</p>
-          <p>Replace placeholder contact & WhatsApp details in cafeConfig.ts before launch.</p>
         </div>
       </div>
     </footer>

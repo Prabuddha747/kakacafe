@@ -1,0 +1,435 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A beverage or bakery item on the Kaka Cafe menu.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of the coffee or snack.",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-safe identifier slug.",
+          "minLength": 2,
+          "maxLength": 100,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "category": {
+          "type": "string",
+          "description": "Menu category name.",
+          "enum": [
+            "Hot Coffee",
+            "Cold Coffee",
+            "Espresso",
+            "Frappes",
+            "Milkshakes",
+            "Tea",
+            "Snacks & Desserts"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Tasting notes and description.",
+          "minLength": 5,
+          "maxLength": 400
+        },
+        "price": {
+          "type": "number",
+          "description": "Base price in Indian Rupees (INR)."
+        },
+        "rating": {
+          "type": "number",
+          "description": "Average customer rating from 1 to 5."
+        },
+        "reviewsCount": {
+          "type": "integer",
+          "description": "Total number of customer reviews."
+        },
+        "image": {
+          "type": "string",
+          "description": "Local asset path or URL for the product photograph.",
+          "maxLength": 300
+        },
+        "isBestSeller": {
+          "type": "boolean",
+          "description": "Whether the product appears in the Best Sellers section."
+        },
+        "isBeverage": {
+          "type": "boolean",
+          "description": "Whether the item supports drink size and barista customizations."
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the item is visible on the storefront menu."
+        },
+        "tag": {
+          "type": "string",
+          "description": "Optional single editorial descriptor.",
+          "maxLength": 32
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": [
+        "name",
+        "slug",
+        "category",
+        "description",
+        "price",
+        "rating",
+        "reviewsCount",
+        "image",
+        "isBestSeller",
+        "isBeverage",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Storefront menu category metadata.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 60,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "image": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "displayOrder": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "name",
+        "slug",
+        "description",
+        "image",
+        "displayOrder",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Offer": {
+      "title": "Offer",
+      "description": "Promotional offer displayed on the storefront and redeemable at checkout.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 160
+        },
+        "code": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 24,
+          "pattern": "^[A-Z0-9_-]+$"
+        },
+        "discountType": {
+          "type": "string",
+          "enum": ["bogo", "combo", "percent", "flat"]
+        },
+        "discountValue": {
+          "type": "number"
+        },
+        "targetCategory": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "title",
+        "subtitle",
+        "code",
+        "discountType",
+        "discountValue",
+        "targetCategory",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer beverage and snack order.",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 24
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "customerName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "customerPhone": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 20
+        },
+        "customerEmail": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "orderType": {
+          "type": "string",
+          "enum": ["Pickup", "Delivery"]
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": ["Cash on Delivery", "UPI"]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Pending",
+            "Confirmed",
+            "Preparing",
+            "Ready",
+            "Out for Delivery",
+            "Completed",
+            "Cancelled"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "description": "Bounded list of ordered items (1 to 25 items)."
+        },
+        "subtotal": {
+          "type": "number"
+        },
+        "deliveryFee": {
+          "type": "number"
+        },
+        "tax": {
+          "type": "number"
+        },
+        "discount": {
+          "type": "number"
+        },
+        "promoCode": {
+          "type": "string",
+          "maxLength": 24
+        },
+        "total": {
+          "type": "number"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "orderNumber",
+        "userId",
+        "customerName",
+        "customerPhone",
+        "customerEmail",
+        "orderType",
+        "deliveryAddress",
+        "paymentMethod",
+        "status",
+        "items",
+        "subtotal",
+        "deliveryFee",
+        "tax",
+        "discount",
+        "promoCode",
+        "total",
+        "notes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "NewsletterSubscriber": {
+      "title": "NewsletterSubscriber",
+      "description": "Verified newsletter subscription record.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "email", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Customer inquiry submitted through the Contact page.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "email": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 20
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 1000
+        },
+        "status": {
+          "type": "string",
+          "enum": ["New", "Reviewed"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "name", "email", "phone", "message", "status", "createdAt"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Trusted admin role assignment document.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["email", "role", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Kaka Cafe menu items."
+    },
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "#/entities/Category" },
+      "description": "Menu categories."
+    },
+    "/offers/{offerId}": {
+      "schema": { "$ref": "#/entities/Offer" },
+      "description": "Special promotional offers."
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Customer orders (isolated to owner or admin)."
+    },
+    "/newsletter_subscribers/{subscriberId}": {
+      "schema": { "$ref": "#/entities/NewsletterSubscriber" },
+      "description": "Verified newsletter subscribers."
+    },
+    "/contact_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "Contact page inquiries."
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "RBAC admin registry."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Kaka Cafe",
+  "description": "Your Daily Dose of Happiness. Artisanal specialty coffee, cold brews, handcrafted frappes, teas, and bakery treats.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

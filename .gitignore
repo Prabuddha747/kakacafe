@@ -1,0 +1,13 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Superseded by public/assets/aistudio/coffee_scroll_sequence.mp4 (unused raw source material)
+public/assets/aistudio/ezgif-8f419b39040b50de-png-split_83de5840.zip
+public/assets/aistudio/ezgif-frame-*.png
+public/assets/aistudio/Hero_coffee_preparation_scene__photorealistic_0117744a_923ba9c7.mp4
